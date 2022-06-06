@@ -8,3 +8,4 @@ b64.js, GIFEncoder.js, LZWEncoder.js, NeuQuant.js
 
 While this does have Aframe functionality via the screen shot library, you can use this GIF maker without Aframe, if you are only using it to read in files from a directory.
 
+NOTE: Frame delay in when using Aframe integration should be 1000ms or more as the screenshot functionality creates delays in Aframe video processing - have a play :)
