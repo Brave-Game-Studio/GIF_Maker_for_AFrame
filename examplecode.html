@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+	<script type="text/javascript" src="./javascript/LZWEncoder.js"></script>
+	<script type="text/javascript" src="./javascript/NeuQuant.js"></script>
+	<script type="text/javascript" src="./javascript/GIFEncoder.js"></script>
+	<script type="text/javascript" src="./javascript/b64.js"></script>
+	<script type="text/javascript" src="./javascript/gifMaker.js"></script>
+
+</head>
+<body>
+
+	<script>
+	
+		//call this code from your Make GIF/Video Record button
+		//showProgress = true;//<< you can set this to true to track progress via console
+		gifMaker_SetParameters(window.innerWidth/*image width*/, window.innerHeight/*image height*/, 1000/*frame delay*/, 10/*number of frames*/);//if the process crashes use less frame
+		gifMaker_CreateAnimatedGif_WithCanvas(getScreenshot, doStuffWithFile);//will take screen shots based on frame delay setting
+
+
+		function getScreenshot(){	//this can be any method name, it's just a method you need to pass in to gifMaker_CreateAnimatedGif_WithCanvas, so it can call it per frame capture
+			return document.querySelector('a-scene').components.screenshot.getCanvas('perspective');
+		}
+		
+		function doStuffWithFile(){ //this is what ever functionality you want to happen at the end of frame capturing, in this example it's saving the file for download
+			gifMaker_SaveToFile("saving an Aframe-frame.png");
+		}
+		
+	</script>
+
+   <a-scene  id="scene" class="clickable" mindar-image="imageTargetSrc: AR_bunnyears_target.txt; uiError:no; uiLoading:no; uiScanning:no;"
+   do-animation  renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" color-space="sRGB"
+   device-orientation-permission-ui="enabled: true" style="position: absolute; zIndex: 1">
+
+		//A-Frame STUFF
+
+	  <!-- Camera -->
+	<a-camera mousecontrol id="camera" position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: 10000; objects: .clickable">
+	 </a-camera>
+        
+
+  </a-scene>
+
+
+</body>
+
+</html>
+
