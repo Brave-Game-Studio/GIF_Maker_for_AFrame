@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="./javascript/LZWEncoder.js"></script>
+<script type="text/javascript" src="./javascript/NeuQuant.js"></script>
+<script type="text/javascript" src="./javascript/GIFEncoder.js"></script>
+<script type="text/javascript" src="./javascript/b64.js"></script>
+<script type="text/javascript" src="./javascript/gifMaker.js"></script>
+   <title>testing</title>
+  </head>
+  <body>
+
+<script>
+
+showProgress = false;//<< you can set this to true to track progress via console
+
+gifMaker_SetParameters(1280/*image width*/, 720/*image height*/, 50/*frame delay*/, 100/*number of frames*/);//if the process crashes use less frame
+gifMaker_CreateAnimatedGif_WithFiles("./input/", doStuffWithFile);//use this if you are accessing the files in a directory
+
+function doStuffWithFile(){
+	gifMaker_SaveToFile("saving a new file.png");
+}
+
+</script>
+
+  
+	<p>This is a test page</p>
+  </body>
+</html>
